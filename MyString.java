@@ -16,7 +16,7 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
     }
   }
   public int length() {
-
+    return this.data.length;
   }
   public CharSequence subSequence(int start, int end) {
 
