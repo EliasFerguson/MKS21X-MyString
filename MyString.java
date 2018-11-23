@@ -1,6 +1,7 @@
 public class MyString implements CharSequence,Comparable<CharSequence>{
   private char[] data;
   String indexProblem = "Index must be greater than 0 and less than the length of the CharSequence.";
+  String badInput = "Your end index is less than your start index that is not allowed.";
   public MyString(CharSequence s) {
     data = new char[s.length()];
     for (int i = 0 ; i < s.length(); i++) {
@@ -19,7 +20,20 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
     return this.data.length;
   }
   public CharSequence subSequence(int start, int end) {
-
+    String output = "";
+    int len = data.length - 1;
+    if ((start < 0 || end < 0) || (start > len || end > len)) {
+      throw new IndexOutOfBoundsException(indexProblem);
+    }
+    else if (start > end) {
+      throw new IllegalArgumentException(badInput);
+    }
+    else {
+      for (int i = start; i < end; i++) {
+        output += this.charAt(i);
+      }
+    }
+    return output;
   }
   public String toString() {
     String output = "";
