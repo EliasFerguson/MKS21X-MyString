@@ -22,7 +22,7 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
 
   }
   public String toString() {
-    output = "";
+    String output = "";
     for (int i = 0; i < data.length; i++) {
       output += data[i];
     }
