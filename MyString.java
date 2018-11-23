@@ -2,6 +2,7 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
   private char[] data;
   String indexProblem = "Index must be greater than 0 and less than the length of the CharSequence.";
   String badInput = "Your end index is less than your start index that is not allowed.";
+  String nullBad = "Null inputs are not allowed.";
   public MyString(CharSequence s) {
     data = new char[s.length()];
     for (int i = 0 ; i < s.length(); i++) {
@@ -17,7 +18,7 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
     }
   }
   public int length() {
-    return this.data.length;
+    return data.length;
   }
   public CharSequence subSequence(int start, int end) {
     String output = "";
@@ -41,5 +42,10 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
       output += data[i];
     }
     return output;
+  }
+  public int compareTo(CharSequence y) {
+    if (y == null || this == null) {
+      throw new NullPointerException(nullBad);
+    }
   }
 }
