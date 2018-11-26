@@ -47,7 +47,16 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
     if (input == null || this == null) {
       throw new NullPointerException(nullBad);
     }
-
+    x = this.toASCII();
+    y = input.toASCII();
+    for (int i = 0; i < Math.min(x.length, y.length); i++) {
+      if (x[i] < y[i]) {
+        return -1;
+      }
+      else if (x[i] > y[i]) {
+        return 1;
+      }
+    }
     return 0;
   }
   public int[] toASCII() {
