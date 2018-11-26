@@ -43,9 +43,19 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
     }
     return output;
   }
-  public int compareTo(CharSequence y) {
-    if (y == null || this == null) {
+  public int compareTo(CharSequence input) {
+    if (input == null || this == null) {
       throw new NullPointerException(nullBad);
     }
+
+    return 0;
+  }
+  public int[] toASCII() {
+    int[] returner = new int[this.length()];
+    for (int i = 0; i < returner.length; i++) {
+      int inQ = this.charAt(i);
+      returner[i] = inQ;
+    }
+    return returner;
   }
 }
