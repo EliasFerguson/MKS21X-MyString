@@ -84,12 +84,14 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
     System.out.println("msg.compareTo(\"drank\"): " + msg.compareTo("drank"));          // 1
     System.out.println("msg.compareTo(\"drunk\"): " + msg.compareTo("drunk"));          // -1
   }
+  //Constructor
   public MyString(CharSequence s) {
     data = new char[s.length()];
     for (int i = 0 ; i < s.length(); i++) {
       data[i] = s.charAt(i);
     }
   }
+  //charAt - returns the character at the specified index. Throws an excpetion if the index is invalid.
   public char charAt(int idx) {
     if (idx < 0 || idx > (data.length - 1)) {
       throw new IndexOutOfBoundsException(indexProblem);
@@ -101,6 +103,7 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
   public int length() {
     return data.length;
   }
+  //subSequence - returns the CharSequence between the specified indices. Throws an exception if the indices are invalid.
   public CharSequence subSequence(int start, int end) {
     String output = "";
     int len = data.length;
@@ -117,6 +120,7 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
     }
     return output;
   }
+  //Turns the CharSequence into a String.
   public String toString() {
     String output = "";
     for (int i = 0; i < data.length; i++) {
@@ -124,6 +128,10 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
     }
     return output;
   }
+  //Returns -1 if this comes before input in the dictionary.
+  //Returns 0 if the this CharSequence and the input CharSequence are the same.
+  //Returns 1 if this comes after input in the dictionary.
+  //Throws an exception if either this or input is null.
   public int compareTo(CharSequence input) {
     if (input == null || this == null) {
       throw new NullPointerException(nullBad);
@@ -146,6 +154,7 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
     }
     return 0;
   }
+  //Helper function for compareTo(), converts all chars to their ASCII values.
   public int[] toASCII(CharSequence input) {
     int[] returner = new int[input.length()];
     for (int i = 0; i < returner.length; i++) {
