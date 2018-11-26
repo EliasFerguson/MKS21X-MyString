@@ -47,8 +47,8 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
     if (input == null || this == null) {
       throw new NullPointerException(nullBad);
     }
-    x = this.toASCII();
-    y = input.toASCII();
+    int[] x = toASCII(this);
+    int[] y = toASCII(input);
     for (int i = 0; i < Math.min(x.length, y.length); i++) {
       if (x[i] < y[i]) {
         return -1;
@@ -57,12 +57,18 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
         return 1;
       }
     }
+    if (x.length > y.length) {
+      return 1;
+    }
+    if (x.length < y.length) {
+      return -1;
+    }
     return 0;
   }
-  public int[] toASCII() {
-    int[] returner = new int[this.length()];
+  public int[] toASCII(CharSequence input) {
+    int[] returner = new int[input.length()];
     for (int i = 0; i < returner.length; i++) {
-      int inQ = this.charAt(i);
+      int inQ = input.charAt(i);
       returner[i] = inQ;
     }
     return returner;
