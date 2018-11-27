@@ -111,7 +111,7 @@ public class MyString implements CharSequence,Comparable<CharSequence>{
       throw new IndexOutOfBoundsException(indexProblem);
     }
     else if (start > end) {
-      throw new IllegalArgumentException(badInput);
+      throw new IndexOutOfBoundsException(badInput);
     }
     else {
       for (int i = start; i < end; i++) {
